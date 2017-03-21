@@ -27,7 +27,7 @@
 ;;   (global-set-key [C-M-tab] 'clang-format-region)
 
 ;;; Code:
-(message "hello world!!!!!!")
+
 (require 'cl-lib)
 (require 'xml)
 
