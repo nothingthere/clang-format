@@ -1,0 +1,28 @@
+#+TITLE: clang-format
+
+* 项目建立原因
+  为了在org文件中编辑c源码时使用clang-format格式化代码。
+
+  使用melpa版本的插件会报错，大致知晓原因为第152行传递给clang-format程
+  序的参数assume-filename有出入。
+
+  #+BEGIN_EXAMPLE
+    "-assume-filename" (or (buffer-file-name) "")
+  #+END_EXAMPLE
+
+  由于在org源码编辑时，buffer-file-name返回nil值，从而
+  将-assume-filename的值得转换为了空字符串。执行时会报错：
+
+  #+BEGIN_EXAMPLE
+    clang-format-region: (clang-format killed by signal Segmentation fault: 0  libLLVM-3.8.so.1 0x00007f75376a25f5 llvm::sys::PrintStackTrace(llvm::raw_ostream&) + 37)
+  #+END_EXAMPLE
+
+  所以将改行注释掉。不知是否正确。
+
+* 关于版权
+  版权问题不太懂。
+
+  本来想fork github上的项目，但没找到官方版本。完全将官网上的版本搬到
+  了这里。[[https://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format/clang-format.el][原代码地址]]
+* 使用方法
+  参考源码 [[file:clang-format.el][clang-format.el]] 即可。
