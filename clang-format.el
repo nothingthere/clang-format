@@ -149,7 +149,7 @@ is no active region.  If no style is given uses `clang-format-style'."
                        nil `(,temp-buffer ,temp-file) nil
 
                        "-output-replacements-xml"
-                       ;; "-assume-filename" (or (buffer-file-name) " ")
+                       ;; "-assume-filename" (or (buffer-file-name) " ") ;;我注释掉的行
                        "-style" style
                        "-offset" (number-to-string file-start)
                        "-length" (number-to-string (- file-end file-start))
